@@ -1,9 +1,9 @@
 variable = input('Ingrese una cadena: ')
 
-def conteo(cadena:str):
+def compress_strings(cadena:str):
     if len(cadena) != 0:
         if len(cadena) == 1:
-            print(cadena[0])
+            return cadena
         else:
             contador = 1
             caracter = cadena[0]
@@ -14,11 +14,10 @@ def conteo(cadena:str):
                     break
             
             if contador > 1:
-                print(contador, end='')
+                return f'{contador}{conteo(cadena[contador:])}'
             else:
-                print(caracter, end='')
+                return f'{caracter}{conteo(cadena[contador:])}'
 
-            conteo(cadena[contador:])
-
-conteo(variable)
+NewCadena = compress_strings(variable)
+print(NewCadena)
 
